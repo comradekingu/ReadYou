@@ -31,6 +31,7 @@ class RssHelper @Inject constructor(
     private val context: Context,
     @DispatcherIO
     private val dispatcherIO: CoroutineDispatcher,
+    private val okHttpClient: OkHttpClient,
 ) {
     @Throws(Exception::class)
     suspend fun searchFeed(feedLink: String): FeedWithArticle {
@@ -58,7 +59,7 @@ class RssHelper @Inject constructor(
     @Throws(Exception::class)
     suspend fun parseFullContent(link: String, title: String): String {
         return withContext(dispatcherIO) {
-            val response = OkHttpClient()
+            val response = okHttpClient
                 .newCall(Request.Builder().url(link).build())
                 .execute()
             val content = response.body!!.string()
@@ -142,7 +143,7 @@ class RssHelper @Inject constructor(
     ) {
         withContext(dispatcherIO) {
             val domainRegex = Regex("(http|https)://(www.)?(\\w+(\\.)?)+")
-            val request = OkHttpClient()
+            val request = okHttpClient
                 .newCall(Request.Builder().url(articleLink).build())
                 .execute()
             val content = request.body!!.string()
@@ -164,7 +165,7 @@ class RssHelper @Inject constructor(
             } else {
                 domainRegex.find(articleLink)?.value?.let {
                     Log.i("RLog", "favicon: ${it}")
-                    val request = OkHttpClient()
+                    val request = okHttpClient
                         .newCall(Request.Builder().url("$it/favicon.ico").build())
                         .execute()
                     if (request.isSuccessful) {
