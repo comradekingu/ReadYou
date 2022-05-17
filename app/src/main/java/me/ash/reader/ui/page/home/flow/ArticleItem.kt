@@ -22,9 +22,9 @@ import coil.size.Scale
 import me.ash.reader.R
 import me.ash.reader.data.entity.ArticleWithFeed
 import me.ash.reader.data.preference.*
-import me.ash.reader.ui.component.AsyncImage
+import me.ash.reader.ui.component.base.AsyncImage
 import me.ash.reader.ui.ext.formatAsString
-import me.ash.reader.ui.page.home.FeedIcon
+import me.ash.reader.ui.component.FeedIcon
 
 @Composable
 fun ArticleItem(
