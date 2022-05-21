@@ -20,7 +20,7 @@ import coil.size.Size
 import me.ash.reader.R
 
 @Composable
-fun AsyncImage(
+fun RYAsyncImage(
     modifier: Modifier = Modifier,
     data: Any? = null,
     size: Size = Size.ORIGINAL,

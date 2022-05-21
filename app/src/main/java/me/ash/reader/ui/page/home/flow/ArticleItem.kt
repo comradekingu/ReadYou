@@ -22,7 +22,7 @@ import coil.size.Scale
 import me.ash.reader.R
 import me.ash.reader.data.entity.ArticleWithFeed
 import me.ash.reader.data.preference.*
-import me.ash.reader.ui.component.base.AsyncImage
+import me.ash.reader.ui.component.base.RYAsyncImage
 import me.ash.reader.ui.ext.formatAsString
 import me.ash.reader.ui.component.FeedIcon
 
@@ -137,7 +137,7 @@ fun ArticleItem(
 
             // Image
             if (articleWithFeed.article.img != null && articleListImage.value) {
-                AsyncImage(
+                RYAsyncImage(
                     modifier = Modifier
                         .padding(start = 10.dp)
                         .size(80.dp)
